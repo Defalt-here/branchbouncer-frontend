@@ -55,7 +55,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
   revealedClassName,
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: false });
   const [isMounted, setIsMounted] = useState(false);
 
   const [revealCount, setRevealCount] = useState<number>(0);
@@ -63,6 +63,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
   const animationFrameRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
   const lastFlipTimeRef = useRef<number>(0);
+  const hasAnimatedRef = useRef<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -73,6 +74,9 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
 
   useEffect(() => {
     if (!isInView || !isMounted) return;
+    if (hasAnimatedRef.current) return;
+    
+    hasAnimatedRef.current = true;
 
     // Reset state for a fresh animation whenever dependencies change
     const initial = text

@@ -15,7 +15,9 @@ const eslintConfig = defineConfig([
   ]),
   {
     rules: {
-      "@next/next/no-inline-styles": "off"
+      "@next/next/no-inline-styles": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "react-compiler/react-compiler": "off"
     }
   }
 ]);

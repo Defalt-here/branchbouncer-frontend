@@ -15,15 +15,17 @@ import {
   NavbarButton,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
-import { EncryptedText } from "@/components/ui/encrypted-text";
+import { TextEncrypted } from "@/components/ui/decrypt-text";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { Footer } from "@/app/components/Footer";
+import { Snippet } from "@heroui/snippet";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "Get started", link: "bouncer-generator" },
+    { name: "Use GUI", link: "bouncer-generator" },
     { name: "Docs", link: "#about" },
   ];
 
@@ -34,9 +36,6 @@ export default function Home() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-2">
-            <NavbarButton href="#" variant="secondary">
-              Login
-            </NavbarButton>
             <NavbarButton href="https://github.com/SidhantCodes/branchbouncer" variant="primary">
               GitHub
             </NavbarButton>
@@ -60,9 +59,6 @@ export default function Home() {
               </a>
             ))}
             <div className="flex flex-col gap-2 w-full">
-              <NavbarButton href="#" variant="secondary">
-                Login
-              </NavbarButton>
               <NavbarButton href="#" variant="primary">
                 Sign Up
               </NavbarButton>
@@ -92,7 +88,10 @@ export default function Home() {
               <HoverBorderGradient
                 as="a"
                 className="text-white font-medium"
-                onClick={() => window.location.href = 'bouncer-generator'}
+                onClick={() => {
+                  const element = document.getElementById('quick-startup');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Get Started
               </HoverBorderGradient>
@@ -123,12 +122,10 @@ export default function Home() {
 
       <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center px-4">
         <div className="mx-auto max-w-4xl py-10 flex flex-col items-start gap-6">
-          <EncryptedText
+          <TextEncrypted
             text="Open source protection decoded."
-            className="text-7xl md:text-5xl text-left"
-            encryptedClassName="text-neutral-500"
-            revealedClassName="text-white"
-            revealDelayMs={50}
+            className="text-7xl md:text-5xl text-left text-white"
+            interval={30}
           />
           <p className="text-white text-left">BranchBouncer uses smart rules to protect your repository from spam and malicious pull requests. Configure age requirements, minimum contributions, and blocked paths and much more to keep your project secure.</p>
           <HoverBorderGradient
@@ -141,6 +138,57 @@ export default function Home() {
           </HoverBorderGradient>
         </div>
       </div>
+
+      <div id="quick-startup" className="min-h-screen w-full bg-black flex flex-col items-center justify-center px-4 py-20">
+        <div className="mx-auto max-w-4xl w-full flex flex-col items-center gap-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Quick Startup
+            </h2>
+            <p className="text-neutral-300 text-lg md:text-xl max-w-2xl mx-auto">
+              Get started with BranchBouncer in seconds. Just run one command in your repository.
+            </p>
+          </div>
+          
+          <div className="w-full max-w-2xl">
+            <Snippet
+              symbol="$"
+              color="default"
+              variant="bordered"
+              hideSymbol={false}
+              codeString="npx branchbouncer"
+              classNames={{
+                base: "bg-neutral-900 border-neutral-700 p-4 flex items-center justify-between",
+                pre: "text-white font-mono text-lg flex-1",
+                symbol: "text-neutral mr-2",
+                copyButton: "!text-white hover:!text-neutral-300 !bg-neutral-800 hover:!bg-neutral-700 px-5 py-5 rounded border border-neutral-600 ml-auto !opacity-100"
+              }}
+            >
+              npx branchbouncer
+            </Snippet>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 w-full">
+            <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
+              <div className="text-white text-2xl font-bold mb-2">1</div>
+              <h3 className="text-white font-semibold mb-2">Run Command</h3>
+              <p className="text-neutral-400 text-sm">Execute the npx command in your repository root</p>
+            </div>
+            <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
+              <div className="text-white text-2xl font-bold mb-2">2</div>
+              <h3 className="text-white font-semibold mb-2">Configure Rules</h3>
+              <p className="text-neutral-400 text-sm">Set up your protection rules interactively</p>
+            </div>
+            <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
+              <div className="text-white text-2xl font-bold mb-2">3</div>
+              <h3 className="text-white font-semibold mb-2">Deploy</h3>
+              <p className="text-neutral-400 text-sm">Commit the generated workflow and you&apos;re protected</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 }

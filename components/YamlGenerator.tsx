@@ -61,6 +61,12 @@ export default function YamlGenerator(rules: Rules, values: Values): GeneratedYa
 
   const workflowYaml = `
 name: BranchBouncer
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: write
+
 on:
   pull_request:
     types: [opened, reopened, synchronize]
