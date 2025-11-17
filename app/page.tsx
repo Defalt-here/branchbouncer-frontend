@@ -108,7 +108,7 @@ export default function Home() {
           />
         </motion.div>
         <p className="text-white text-lg md:text-xl px-4 text-center max-w-4xl">
-          Hey open source should be fun right?
+          Hey, open source should be fun right?
         </p>
         <HoverBorderGradient
           as="a"
@@ -132,7 +132,10 @@ export default function Home() {
             as="a"
             containerClassName="mt-4"
             className="text-white"
-            onClick={() => window.location.href = '#'}
+            onClick={() => {
+                  const element = document.getElementById('quick-startup');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
           >
             Get Started
           </HoverBorderGradient>
@@ -166,6 +169,13 @@ export default function Home() {
             >
               npx branchbouncer
             </Snippet>
+            <HoverBorderGradient
+            as="a"
+            containerClassName="mt-4"
+            className="text-white"
+            onClick={() => window.location.href = "bouncer-generator"}>
+              or try our GUI Tool
+            </HoverBorderGradient>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 w-full">
