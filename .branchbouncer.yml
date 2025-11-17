@@ -1,0 +1,7 @@
+rules:
+  - id: account-age-min
+    enabled: true
+    minAccountAgeDays: 100000
+  - id: pr-total-changes-min
+    enabled: true
+    minTotalChanges: 5000
