@@ -152,7 +152,6 @@ export default function Home() {
               Get started with BranchBouncer in seconds. Just run one command in your repository.
             </p>
           </div>
-          
           <div className="w-full max-w-2xl">
             <Snippet
               symbol="$"
