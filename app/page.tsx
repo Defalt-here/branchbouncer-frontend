@@ -167,7 +167,6 @@ export default function Home() {
               npx branchbouncer
             </Snippet>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 w-full">
             <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
               <div className="text-white text-2xl font-bold mb-2">1</div>
