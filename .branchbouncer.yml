@@ -1,0 +1,10 @@
+rules:
+  - id: account-age-min
+    enabled: true
+    minAccountAgeDays: 730
+  - id: user-public-repos-min
+    enabled: true
+    minPublicRepos: 5
+  - id: pr-total-changes-min
+    enabled: true
+    minTotalChanges: 10
