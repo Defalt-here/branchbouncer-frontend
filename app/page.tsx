@@ -26,7 +26,7 @@ export default function Home() {
   const navItems = [
     { name: "Home", link: "/" },
     { name: "Use GUI", link: "bouncer-generator" },
-    { name: "Docs", link: "#about" },
+    { name: "Docs", link: "/docs" },
   ];
 
   return (
@@ -81,7 +81,7 @@ export default function Home() {
               <HoverBorderGradient
                 as="a"
                 className="text-white font-medium"
-                onClick={() => window.location.href = '#'}
+                onClick={() => window.location.href = '/docs'}
               >
                 Documentation
               </HoverBorderGradient>
@@ -114,7 +114,7 @@ export default function Home() {
           as="a"
           containerClassName="mt-4"
           className="text-white font-medium"
-          onClick={() => window.location.href = '#'}
+          onClick={() => window.location.href = 'https://www.npmjs.com/package/branchbouncer'}
         >
           Learn More
         </HoverBorderGradient>
@@ -158,7 +158,7 @@ export default function Home() {
               color="default"
               variant="bordered"
               hideSymbol={false}
-              codeString="npx branchbouncer"
+              codeString="npx branchbouncer@latest init"
               classNames={{
                 base: "bg-neutral-900 border-neutral-700 p-4 flex items-center justify-between",
                 pre: "text-white font-mono text-lg flex-1",
@@ -166,7 +166,7 @@ export default function Home() {
                 copyButton: "!text-white hover:!text-neutral-300 !bg-neutral-800 hover:!bg-neutral-700 px-5 py-5 rounded border border-neutral-600 ml-auto !opacity-100"
               }}
             >
-              npx branchbouncer
+              npx branchbouncer@latest init
             </Snippet>
             <HoverBorderGradient
             as="a"
