@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 // NOTE: I set a default metadataBase below. If you deploy to a different
 // domain, update `metadataBase` accordingly.
-export const metadataBase = new URL("https://branchbouncer.dev");
+export const metadataBase = new URL("https://branchbouncer.vercel.app");
 
 export const metadata: Metadata = {
   title: "BranchBouncer",
@@ -27,18 +27,18 @@ export const metadata: Metadata = {
     "security",
     "branchbouncer",
   ],
-  authors: [{ name: "BranchBouncer", url: "https://github.com/SidhantCodes/branchbouncer" }],
+  authors: [{ name: "BranchBouncer", url: "https://github.com/Defalt-here/branchbouncer-frontend" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/logo.png",
   },
   openGraph: {
     title: "BranchBouncer",
     description: "Protect your repository from spam and malicious pull requests",
-    url: "https://branchbouncer.dev",
+    url: "https://branchbouncer.vercel.app",
     siteName: "BranchBouncer",
     images: [
       {
-        url: "/logo.svg",
+        url: "/logo.png",
         alt: "BranchBouncer Logo",
       },
     ],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BranchBouncer",
     description: "Protect your repository from spam and malicious pull requests",
-    images: ["/logo.svg"],
+    images: ["/logo.png"],
   },
   themeColor: [{ media: "(prefers-color-scheme: light)", color: "#ffffff" }, { media: "(prefers-color-scheme: dark)", color: "#000000" }],
   robots: {
@@ -76,12 +76,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "BranchBouncer",
-              url: metadataBase?.toString() ?? "https://branchbouncer.dev",
+              url: metadataBase?.toString() ?? "https://branchbouncer.vercel.app",
               description: metadata.description,
               publisher: {
                 "@type": "Organization",
                 name: "BranchBouncer",
-                url: metadataBase?.toString() ?? "https://branchbouncer.dev",
+                url: metadataBase?.toString() ?? "https://branchbouncer.vercel.app",
               },
             }),
           }}
