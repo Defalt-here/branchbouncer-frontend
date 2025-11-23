@@ -36,7 +36,10 @@ export default function Home() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-2">
-            <NavbarButton href="https://github.com/SidhantCodes/branchbouncer" variant="primary">
+            <NavbarButton
+              href="https://github.com/SidhantCodes/branchbouncer"
+              variant="primary"
+            >
               GitHub
             </NavbarButton>
           </div>
@@ -45,23 +48,41 @@ export default function Home() {
         <MobileNav>
           <MobileNavHeader>
             <NavbarLogo />
-            <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+            <MobileNavToggle
+              isOpen={isOpen}
+              onClick={() => setIsOpen(!isOpen)}
+            />
           </MobileNavHeader>
-          <MobileNavMenu isOpen={isOpen} onClose={() => setIsOpen(false)}>
-            {navItems.map((item, idx) => (
+
+          <MobileNavMenu
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+            className="absolute top-full left-0 right-0 mt-4 mx-auto w-[60%] max-w-[350px] rounded-2xl border border-white/10 bg-neutral-950/80 backdrop-blur-2xl shadow-2xl shadow-black/80 z-50 overflow-hidden"
+          >
+            <div className="flex flex-col">
+              {navItems.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.link}
+                  onClick={() => setIsOpen(false)}
+                  className="
+                    relative flex items-center justify-center w-full px-4 py-4
+                    text-neutral-300 text-base font-medium transition-all duration-200
+                    rounded-xl hover:bg-white/5 hover:text-white
+                    active:scale-[0.98] active:bg-white/10
+                  "
+                >
+                  {item.name}
+                </a>
+              ))}
+              
+              <div className="h-px w-full bg-neutral-800 my-1" />
               <a
-                key={idx}
-                href={item.link}
-                className="text-neutral-600 dark:text-neutral-300"
-                onClick={() => setIsOpen(false)}
+                href="https://github.com/SidhantCodes/branchbouncer"
+                className="flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-black bg-white rounded-xl hover:bg-neutral-200 transition-colors"
               >
-                {item.name}
+                Star on GitHub
               </a>
-            ))}
-            <div className="flex flex-col gap-2 w-full">
-              <NavbarButton href="#" variant="primary">
-                Sign Up
-              </NavbarButton>
             </div>
           </MobileNavMenu>
         </MobileNav>
@@ -75,13 +96,14 @@ export default function Home() {
               BranchBouncer
             </h1>
             <p className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
-              Select your rules, Generate your YAML, Commit. It&apos;s that simple
+              Select your rules, Generate your YAML, Commit. It&apos;s that
+              simple
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
               <HoverBorderGradient
                 as="a"
                 className="text-white font-medium"
-                onClick={() => window.location.href = '/docs'}
+                onClick={() => (window.location.href = "/docs")}
               >
                 Documentation
               </HoverBorderGradient>
@@ -89,8 +111,8 @@ export default function Home() {
                 as="a"
                 className="text-white font-medium"
                 onClick={() => {
-                  const element = document.getElementById('quick-startup');
-                  element?.scrollIntoView({ behavior: 'smooth' });
+                  const element = document.getElementById("quick-startup");
+                  element?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 Get Started
@@ -114,7 +136,10 @@ export default function Home() {
           as="a"
           containerClassName="mt-4"
           className="text-white font-medium"
-          onClick={() => window.location.href = 'https://www.npmjs.com/package/branchbouncer'}
+          onClick={() =>
+            (window.location.href =
+              "https://www.npmjs.com/package/branchbouncer")
+          }
         >
           Learn More
         </HoverBorderGradient>
@@ -127,29 +152,38 @@ export default function Home() {
             className="text-7xl md:text-5xl text-left text-white"
             interval={30}
           />
-          <p className="text-white text-left">BranchBouncer uses smart rules to protect your repository from spam and malicious pull requests. Configure age requirements, minimum contributions, and blocked paths and much more to keep your project secure.</p>
+          <p className="text-white text-left">
+            BranchBouncer uses smart rules to protect your repository from spam
+            and malicious pull requests. Configure age requirements, minimum
+            contributions, and blocked paths and much more to keep your project
+            secure.
+          </p>
           <HoverBorderGradient
             as="a"
             containerClassName="mt-4"
             className="text-white"
             onClick={() => {
-                  const element = document.getElementById('quick-startup');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-                }}
+              const element = document.getElementById("quick-startup");
+              element?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
             Get Started
           </HoverBorderGradient>
         </div>
       </div>
 
-      <div id="quick-startup" className="min-h-screen w-full bg-black flex flex-col items-center justify-center px-4 py-20">
+      <div
+        id="quick-startup"
+        className="min-h-screen w-full bg-black flex flex-col items-center justify-center px-4 py-20"
+      >
         <div className="mx-auto max-w-4xl w-full flex flex-col items-center gap-8">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-white">
               Quick Startup
             </h2>
             <p className="text-neutral-300 text-lg md:text-xl max-w-2xl mx-auto">
-              Get started with BranchBouncer in seconds. Just run one command in your repository.
+              Get started with BranchBouncer in seconds. Just run one command in
+              your repository.
             </p>
           </div>
           <div className="w-full max-w-2xl">
@@ -163,16 +197,20 @@ export default function Home() {
                 base: "bg-neutral-900 border-neutral-700 p-4 flex items-center justify-between",
                 pre: "text-white font-mono text-lg flex-1",
                 symbol: "text-neutral mr-2",
-                copyButton: "!text-white hover:!text-neutral-300 !bg-neutral-800 hover:!bg-neutral-700 px-5 py-5 rounded border border-neutral-600 ml-auto !opacity-100"
+                copyButton:
+                  "!text-white hover:!text-neutral-300 !bg-neutral-800 hover:!bg-neutral-700 px-5 py-5 rounded border border-neutral-600 ml-auto !opacity-100",
               }}
             >
               npx branchbouncer@latest init
             </Snippet>
             <HoverBorderGradient
-            as="a"
-            containerClassName="mt-4"
-            className="text-white"
-            onClick={() => window.location.href = "bouncer-generator"}>
+              as="a"
+              containerClassName="mt-4"
+              className="text-white"
+              onClick={() =>
+                (window.location.href = "bouncer-generator")
+              }
+            >
               or try our GUI Tool
             </HoverBorderGradient>
           </div>
@@ -180,17 +218,25 @@ export default function Home() {
             <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
               <div className="text-white text-2xl font-bold mb-2">1</div>
               <h3 className="text-white font-semibold mb-2">Run Command</h3>
-              <p className="text-neutral-400 text-sm">Execute the npx command in your repository root</p>
+              <p className="text-neutral-400 text-sm">
+                Execute the npx command in your repository root
+              </p>
             </div>
             <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
               <div className="text-white text-2xl font-bold mb-2">2</div>
-              <h3 className="text-white font-semibold mb-2">Configure Rules</h3>
-              <p className="text-neutral-400 text-sm">Set up your protection rules interactively</p>
+              <h3 className="text-white font-semibold mb-2">
+                Configure Rules
+              </h3>
+              <p className="text-neutral-400 text-sm">
+                Set up your protection rules interactively
+              </p>
             </div>
             <div className="p-6 rounded-lg border border-neutral-800 bg-neutral-900/50">
               <div className="text-white text-2xl font-bold mb-2">3</div>
               <h3 className="text-white font-semibold mb-2">Deploy</h3>
-              <p className="text-neutral-400 text-sm">Commit the generated workflow and you&apos;re protected</p>
+              <p className="text-neutral-400 text-sm">
+                Commit the generated workflow and you&apos;re protected
+              </p>
             </div>
           </div>
         </div>

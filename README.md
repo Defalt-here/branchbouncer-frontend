@@ -36,3 +36,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## SEO improvements added
+
+I added a small set of SEO improvements to this repository to help search engines and social platforms index and preview the site better:
+
+- Enhanced global metadata in `app/layout.tsx` (Open Graph, Twitter card, keywords, theme color, robots).
+- Exported `metadataBase` (default set to `https://branchbouncer.dev`) — update this to your production domain.
+- Added JSON-LD structured data (WebSite/Organization) to the layout.
+- Added a generated sitemap endpoint at `/sitemap.xml` (`app/sitemap.xml/route.ts`).
+- Added `public/robots.txt` referencing the sitemap.
+
+Quick customization:
+
+- Change the `metadataBase` value in `app/layout.tsx` to your real domain.
+- Replace `/logo.svg` used in Open Graph and Twitter metadata with a dedicated social preview image (recommended: 1200x630 PNG). Place it in `public/` and update the image path in `app/layout.tsx`.
+
+These changes are intentionally minimal and safe. If you want, I can also:
+
+- Generate a proper social preview image automatically.
+- Add hreflang entries for translations.
+- Add automatic sitemap generation for dynamic pages.
