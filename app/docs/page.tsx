@@ -28,7 +28,6 @@ const docSections: DocSection[] = [
     title: "Introduction",
     subsections: [
       { id: "what-is-branchbouncer", title: "What is BranchBouncer?" },
-      { id: "philosophy", title: "Philosophy" },
       { id: "how-it-works", title: "How It Works" },
     ],
   },
@@ -60,15 +59,6 @@ const docSections: DocSection[] = [
       { id: "pr-changes", title: "PR Changes" },
       { id: "repository-count", title: "Repository Count" },
       { id: "protected-paths", title: "Protected Paths" },
-    ],
-  },
-  {
-    id: "advanced",
-    title: "Advanced",
-    subsections: [
-      { id: "custom-workflows", title: "Custom Workflows" },
-      { id: "troubleshooting", title: "Troubleshooting" },
-      { id: "best-practices", title: "Best Practices" },
     ],
   },
   {
@@ -142,7 +132,7 @@ export default function DocsPage() {
         </MobileNav>
       </Navbar>
 
-      <div className="flex pt-20 flex-1">
+      <div className="flex pt-20 flex-1 px-48">
         {/* Mobile Sidebar Toggle Button */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -294,43 +284,6 @@ export default function DocsPage() {
               </div>
             )}
 
-            {activeSection === "philosophy" && (
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold text-white mb-6">
-                  Philosophy: Commit and Forget
-                </h1>
-                <p className="text-neutral-300">
-                  BranchBouncer follows a &quot;commit and forget&quot; philosophy.
-                  Once configured and committed to your repository, it runs
-                  automatically on every pull request without requiring any
-                  further interaction.
-                </p>
-                <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-6 my-6">
-                  <h3 className="text-white font-semibold mb-3">
-                    Design Principles
-                  </h3>
-                  <div className="space-y-4 text-neutral-300">
-                    <div>
-                      <strong className="text-white">Zero Maintenance:</strong>{" "}
-                      Set it up once, never think about it again
-                    </div>
-                    <div>
-                      <strong className="text-white">Automatic Protection:</strong>{" "}
-                      Works silently in the background
-                    </div>
-                    <div>
-                      <strong className="text-white">Transparent Rules:</strong>{" "}
-                      Contributors know exactly what&apos;s expected
-                    </div>
-                    <div>
-                      <strong className="text-white">Git-Based Config:</strong>{" "}
-                      All settings in version control
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
             {activeSection === "how-it-works" && (
               <div className="space-y-6">
                 <h1 className="text-4xl font-bold text-white mb-6">
@@ -419,35 +372,6 @@ export default function DocsPage() {
                   <p className="text-neutral-400 text-sm mt-3">
                     This command will guide you through an interactive setup process.
                   </p>
-                </div>
-                <div className="bg-blue-900/20 border border-blue-800 rounded-lg p-6">
-                  <h3 className="text-blue-400 font-semibold mb-3">📦 Why npm?</h3>
-                  <ul className="space-y-3 text-neutral-300">
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <div>
-                        <strong className="text-white">Easy Distribution:</strong> npm is the world&apos;s largest software registry, making it easy to distribute and access BranchBouncer globally.
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <div>
-                        <strong className="text-white">Version Management:</strong> npm handles versioning automatically, so you can easily pin to specific versions or always use the latest.
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <div>
-                        <strong className="text-white">No Installation Needed:</strong> Using npx means you don&apos;t clutter your system with global packages - it runs on-demand.
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <div>
-                        <strong className="text-white">Trusted Platform:</strong> npm&apos;s security scanning and package verification ensure you&apos;re getting legitimate, safe code.
-                      </div>
-                    </li>
-                  </ul>
                 </div>
                 <div className="flex gap-4 mt-6">
                   <a
@@ -1343,99 +1267,6 @@ For more information, visit: https://github.com/SidhantCodes/branchbouncer`}
               </div>
             )}
 
-            {/* Advanced */}
-            {activeSection === "advanced" && (
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold text-white mb-6">Advanced</h1>
-                <p className="text-neutral-300 text-lg">
-                  Advanced topics for power users.
-                </p>
-              </div>
-            )}
-
-            {activeSection === "custom-workflows" && (
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold text-white mb-6">
-                  Custom Workflows
-                </h1>
-                <p className="text-neutral-300">
-                  Customize the generated GitHub Actions workflow for your
-                  specific needs.
-                </p>
-              </div>
-            )}
-
-            {activeSection === "troubleshooting" && (
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold text-white mb-6">
-                  Troubleshooting
-                </h1>
-                <div className="space-y-6 text-neutral-300">
-                  <div>
-                    <h3 className="text-white font-semibold mb-2">
-                      Workflow not running?
-                    </h3>
-                    <p>
-                      Ensure the workflow file is in{" "}
-                      <code className="bg-neutral-800 px-2 py-1 rounded">
-                        .github/workflows/
-                      </code>{" "}
-                      and has been committed to your default branch.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold mb-2">
-                      Rules not being enforced?
-                    </h3>
-                    <p>
-                      Check your{" "}
-                      <code className="bg-neutral-800 px-2 py-1 rounded">
-                        branchbouncer.yml
-                      </code>{" "}
-                      configuration file for syntax errors.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeSection === "best-practices" && (
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold text-white mb-6">
-                  Best Practices
-                </h1>
-                <ul className="space-y-4 text-neutral-300">
-                  <li className="flex gap-3">
-                    <span className="text-white">✓</span>
-                    <div>
-                      <strong className="text-white">Start lenient:</strong>{" "}
-                      Begin with relaxed rules and tighten over time
-                    </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-white">✓</span>
-                    <div>
-                      <strong className="text-white">Document rules:</strong>{" "}
-                      Add your rules to CONTRIBUTING.md
-                    </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-white">✓</span>
-                    <div>
-                      <strong className="text-white">Monitor activity:</strong>{" "}
-                      Check Actions logs periodically
-                    </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-white">✓</span>
-                    <div>
-                      <strong className="text-white">Version control:</strong>{" "}
-                      Keep BranchBouncer config in git
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            )}
 
             {/* API Reference */}
             {activeSection === "api-reference" && (
